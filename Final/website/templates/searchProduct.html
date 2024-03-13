@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>בחירת מוצרת למיחזור</title>
+  <link rel="stylesheet" href="{% static 'css/searchProduct.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>בחירת מוצר למיחזור</h1>
+        <form action="{% url 'searchProduct' %}" method="POST">
+            {% csrf_token %}
+            <label for="browser">: אנא בחר את המוצר הרצוי למיחזור</label>
+            {% if selected_product %}
+                <input list="myproducts" name="browser" id="browser" value="{{selected_product.product_name }}">
+            {% else %}
+                <input list="myproducts" name="browser" id="browser">
+            {% endif %}
+            <datalist id="myproducts">
+                {% for product in myproducts %}
+                    <option value="{{ product.product_name }}">
+                {% endfor %}
+            </datalist>
+            <input type="submit">
+        </form>
+
+        {% if selected_product %}
+          <div class="centered">
+            <h2>שם המוצר הרצוי למיחזור: {{ selected_product.product_name }} </h2>
+            <h3> את המוצר יש למחזר ב: פח ה{{ selected_product.bin_type }}</h3>
+            <h4>במיחזור זה אתה צובר: {{ selected_product.value }} נקודות</h4>
+          </div>
+        {% endif %}
+    </div>
+</body>
+</html>

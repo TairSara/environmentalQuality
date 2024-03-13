@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <style>
+        p {
+          background-image: url('https://i.natgeofe.com/k/e094f0a9-3cb3-40c3-afaf-314b6437ef14/ww-funny-animal-faces-goat_16x9.jpg');
+        }
+        </style>
+    <meta charset="UTF-8">
+    <title>צעד למיחזור</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</head>
+<body>
+    <style>
+        p {
+          background-image: url('https://i.natgeofe.com/k/e094f0a9-3cb3-40c3-afaf-314b6437ef14/ww-funny-animal-faces-goat_16x9.jpg');
+        }
+        </style>    <h1> ברוכים הבאים</h1>
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">להתנתקות ויציאה</a> <br>
+    <div id="container">
+        <h1>חידון</h1>
+        <div id="questions"></div>
+        <div id="results"></div>
+    </div>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    {% else %}
+    <a href="{% url 'register' %}">הרשמו עכשיו</a> <br>
+    <a href="{% url 'login' %}">להתחברות וביצוע חידון</a> <br>
+    <a href="{% url 'searchProduct' %}">לחיפוש מחזור מוצרים לפי פח</a><br>
+    <div class="btn__container">
+        <a href="https://www.instagram.com/" class="btn">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+        </a>
+        <a href="https://www.facebook.com/?locale=he_IL" class="btn-f">
+            <i class="fab fa-facebook"></i>
+            <span>Facebook</span>
+        </a>
+        <a href="https://web.whatsapp.com/" class="btn-w">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+    
+    
+    {% endif %}
+</body>
+</html>

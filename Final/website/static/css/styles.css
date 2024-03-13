@@ -1,0 +1,148 @@
+body {
+    font-family: Arial;
+    direction: rtl;
+    text-align: center;
+    background-color: #90EE90;
+    margin: 0;
+    background-image: url('https://cdn.britannica.com/98/214598-050-9879F2FA/giant-sequoia-tree-Sequoia-National-Park-California.jpg');
+    
+}
+
+#container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    margin-top: 100px;
+}
+
+h1 {
+    color: #008000;
+}
+
+.answer {
+    cursor: pointer;
+    padding: 15px;
+    margin: 30px;
+    display: block;
+    width: fit-content;
+    border-radius: 60px;
+    background-color:rgb(229, 240, 233);
+}
+
+.correct {
+    font-weight: bold;
+    background-color: rgb(197, 226, 205);
+    color: green
+}
+
+.incorrect {
+    font-weight: bold;
+    background-color: rgb(247, 186, 186);
+    color:red;
+}
+
+.correct-answer {
+    font-weight: bold;
+    background-color: rgb(71, 237, 115);
+    color: green
+}
+
+#results {
+    margin-top: 30px;
+    background-color: rgb(71, 237, 115);
+    font-weight: bold;
+}
+* {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  body {
+    background-color: #b9f5c8;
+    background-image: url('https://cmr-kataria.com/wp-content/uploads/2021/06/Why-Is-Recycling-Important.png');
+    background-position: center;
+    background-size: cover;
+
+  }
+  
+  .btn__container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn,
+  .btn-w,
+  .btn-f {
+    min-width: 110px;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: #0b0b0b;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+    margin-right: 10px;
+  }
+  
+  .btn i,
+  .btn-w i,
+  .btn-f i {
+    color: #c898b3;
+    font-size: 20px;
+    padding-right: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn span,
+  .btn-w span,
+  .btn-f span {
+    font-family: "Roboto", sans-serif;
+    align-self: center;
+    transform: translateX(0px);
+    transition: all 0.1s ease-in-out;
+    opacity: 1;
+  }
+  
+  .btn:hover,
+  .btn-w:hover,
+  .btn-f:hover {
+    transform: scale(1.1);
+    background: linear-gradient(to right, #85c292 0%, #b7f0d5 100%);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.10);
+  }
+  
+  .btn-w:hover,
+  .btn-w:active {
+    background-color: #41e76d;
+  }
+  
+  .btn-f:hover,
+  .btn-f:active {
+    background-color: #16026e;
+  }
+  
+  .btn i:hover,
+  .btn-w i:hover,
+  .btn-f i:hover {
+    transform: translateX(45px);
+    padding-right: 0;
+    color: #fff;
+  }
+  
+  .btn span:hover,
+  .btn-w span:hover,
+  .btn-f span:hover {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  
+  .btn:active,
+  .btn-w:active,
+  .btn-f:active {
+    transform: scale(1);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.10);
+  }
+  

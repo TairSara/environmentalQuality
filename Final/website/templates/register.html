@@ -1,0 +1,27 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרשמה</title>
+    <link rel="stylesheet" href="{% static 'css/sign.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="main">
+            <div class="title">
+                <h1>הרשמה</h1>
+            </div>
+            <div class="button">
+                <a href="{% url 'corpuser_register' %}" class="btn">משתמש עירייה</a>
+                <a href="{% url 'privateuser_register' %}" class="btn">משתמש פרטי</a>
+            </div>
+        </div>
+    </header>
+</body>
+
+</html>
