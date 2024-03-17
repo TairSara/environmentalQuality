@@ -50,9 +50,6 @@ class CorpSignUpForm(UserCreationForm):
         return user
     
 
-    
-
-
 class ProductForm(forms.ModelForm):
     class Meta:
         model = products

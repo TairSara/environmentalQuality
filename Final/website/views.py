@@ -68,7 +68,7 @@ def addproduct(request):
         if form.is_valid():
             form.save()
             # Redirect to a success page or wherever you want
-            return redirect('products_list')
+            return redirect('productslist')
     else:
         form = ProductForm()
     return render(request, 'product_form.html', {'form': form, 'pagetitle': pagetitle})
