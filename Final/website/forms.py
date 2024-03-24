@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.hashers import make_password
 from django import forms
 from django.db import transaction
-from .models import User, products
+from .models import User, products, usersrecycling, userpoint
 from django.utils.translation import gettext_lazy as _
 
 class PrivateSignUpForm(UserCreationForm):
@@ -60,8 +61,8 @@ class ProductForm(forms.ModelForm):
             "Product_type": _("סוג מוצר"),
             "value": _("מחיר/נקודות"),
             "bin_type": _("סוג פח"),
-        }
-
+    }
+    
     def _init_(self, *args, **kwargs):
         super()._init_(*args, **kwargs)
         self.fields['bin_type'].required = False
@@ -83,3 +84,66 @@ class ProductForm(forms.ModelForm):
             raise forms.ValidationError("ערך מחיר/נקודות צריך להיות גדול מ-0")
 
         return cleaned_data
+    
+
+class UserDetailsForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["id", "username", "first_name", "last_name", "email", "location", "comp_num"]
+        labels = {
+            "id": _("מזהה"),
+            "username": _("שם משתמש"),
+            "first_name": _("שם פרטי"),
+            "last_name": _("שם משפחה"),
+            "email": _("אימייל"),
+            "location": _("עיר מגורים"),
+            "comp_num": _("ח.פ"),
+        }
+        help_texts = {
+            'username': '',
+        }
+    def __init__(self, *args, **kwargs):
+        super(UserDetailsForm, self).__init__(*args, **kwargs)
+        for field_name in self.fields:
+            self.fields[field_name].widget.attrs['readonly'] = True
+        
+class UserDetailsEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["id", "username", "first_name", "last_name", "password", "email", "location", "comp_num"]
+        widgets = {
+            'username': forms.TextInput(attrs={'readonly': True}),
+            'password': forms.PasswordInput(),
+        }
+        labels = {
+            "id": _("מזהה"),
+            "username": _("שם משתמש"),
+            "first_name": _("שם פרטי"),
+            "last_name": _("שם משפחה"),
+            "password": _("סיסמה"),
+            "email": _("אימייל"),
+            "location": _("עיר מגורים"),
+            "comp_num": _("ח.פ"),
+        }
+        help_texts = {
+            'username': '',
+        }
+    def clean_password(self):
+        # Hash the password before saving
+        password = self.cleaned_data.get('password')
+        if password:
+            return make_password(password)
+        return password
+
+class UserRecyclingForm(forms.ModelForm):
+    class Meta:
+        model = usersrecycling
+        fields = ["product", "userImg"]
+        labels = {
+            "product": _("בחר מוצר למיחזור"),
+            "userImg": _("העלאת תמונה"),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(UserRecyclingForm, self).__init__(*args, **kwargs)
+        self.fields['product'].queryset = products.objects.filter(Product_type=False)

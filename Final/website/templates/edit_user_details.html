@@ -1,0 +1,15 @@
+{% extends "master.html" %}
+
+{% block title %}
+    עריכת הפרופיל שלי
+{% endblock %}
+
+
+{% block content %}
+    <h1>עריכת הפרופיל שלי</h1>
+    <form id="editUserDetails" method="post" action="{% url 'userEditform' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" id="submitForm" value="שמור">
+    </form>
+{% endblock %}

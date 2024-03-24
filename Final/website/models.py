@@ -18,6 +18,7 @@ class User(AbstractUser):
 		verbose_name = 'User'
 		verbose_name_plural = 'Users'
 
+
 class products(models.Model):
 	product_name = models.CharField(max_length=255)
 	Product_type = models.BooleanField(default=False)
@@ -36,3 +37,22 @@ class products(models.Model):
 
 	def __str__(self):
 		return f"{self.product_name}, {self.bin_type}"
+	
+
+class usersContacts(models.Model):
+	creationDT = models.DateTimeField(auto_now_add=True)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	content = models.TextField()
+	status = models.BooleanField(default=False)
+
+
+class usersrecycling(models.Model):
+	creationDT = models.DateTimeField(auto_now_add=True)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	product = models.ForeignKey(products, on_delete=models.CASCADE)
+	userImg = models.ImageField(upload_to="usersImgs/")
+	status = models.BooleanField(default=False)
+
+class userpoint(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    points = models.IntegerField(default=0)

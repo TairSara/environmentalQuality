@@ -1,0 +1,15 @@
+{% extends "master.html" %}
+
+{% block title %}
+    הפרופיל שלי
+{% endblock %}
+
+
+{% block content %}
+    <h1>הפרופיל שלי</h1>
+    <form id="userDetails" method="">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+    <a href="{% url 'userEditform' %}">עדכון</a>
+{% endblock %}
