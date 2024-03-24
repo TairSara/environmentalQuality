@@ -1,0 +1,38 @@
+{% extends "master.html" %}
+
+{% block title %}
+    פניות משתמשים
+{% endblock %}
+
+{% block content %}
+    <h1>פניות משתמשים</h1>
+    <table>
+        <tr>
+            <th>תאריך</th>
+            <th>שם משתמש</th>
+            <th>עיר מגורים</th>
+            <th>תוכן הפנייה</th>
+            <th>סטטוס</th>
+            <th></th>
+        </tr>
+
+        {% for c in contacts %}
+            <tr>
+                <td>{{ c.creationDT | date:"d/m/Y" }}</td>
+                <td>{{ c.user }}</td>
+                <td>{{ c.user.location }}</td>
+                <td>{{ c.content }}</td>
+                {% if not c.status %}
+                    <td>ממתין לטיפול</td>
+                    <td><a href="{% url 'changestatus' c.id %}">סמן כטופל</a></td>
+                {% else %}
+                    <td>טופל</td>
+                    <td></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
+    
