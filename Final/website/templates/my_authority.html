@@ -1,7 +1,7 @@
 {% extends "master.html" %}
 
 {% block title %}
-   נתוני מיחזור - לפי פחים
+   הרשות שלי
 {% endblock %}
 
 {% block content %}
@@ -24,7 +24,7 @@
             <td>{{ p.user.last_name }}</td>
             <td>{{ p.user.email }}</td>
             <td>{{ p.user.location }}</td>
-            <td>{{ p.user.lsatlogin }}</td>
+            <td>{{ p.user.lastlogin }}</td> <!-- להוסיף אתזה  -->
             
         </tr>
     {% endfor %}

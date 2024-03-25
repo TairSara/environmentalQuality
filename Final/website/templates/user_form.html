@@ -11,9 +11,13 @@
         {% csrf_token %}
         {{ form.as_p }}
 
-        {% if userType %}
+        {% if userType and not checkAdmin %}
             <a href="{% url 'recycling_bin' %}">  נתוני מיחזור בעיר שלי </a>
             <a href="{% url 'my_authority' %}">  הרשות שלי  </a>
+
+        {% elif checkAdmin %}
+            <a href="{% url 'data_recycling' %}">  נתוני המיחזור באתר </a>
+            <a href="{% url 'data_user' %}">  נתוני משתמשים באתר  </a>
         {% endif %}
     </form>
     <a href="{% url 'userEditform' %}">עדכון פרופיל</a>

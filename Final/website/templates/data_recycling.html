@@ -1,23 +1,25 @@
 {% extends "master.html" %}
 
 {% block title %}
-   נתוני מיחזור בעיר שלי
+נתוני המיחזור באתר
 {% endblock %}
 
 {% block content %}
-<h1>  נתוני מיחזור בעיר שלי  </h1>
+<h1>  נתוני מיחזור של המשתמשים באתר </h1>
 <table>
+
     <tr>
+        <th>שם משתמש</th>
         <th>שם פרטי</th>
         <th>שם משפחה</th>
         <th>עיר מגורים</th>
         <th>שם מוצר</th>
         <th>סוג פח</th>
       </tr>
-
     {% for p in recycling_data %}
         <tr>
             <!-- אני ניגשת לשדה הראשון עם הנקודה הראשונה ואז לשדה שאני רוצה בתוך הטבלה של הראשון -->
+            <td>{{ p.user.username }}</td>
             <td>{{ p.user.first_name }}</td> 
             <td>{{ p.user.last_name }}</td>
             <td>{{ p.user.location }}</td>

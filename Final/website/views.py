@@ -192,7 +192,7 @@ def userform(request):
     if usertype == False:
         form.fields['comp_num'].widget = forms.HiddenInput()
 
-    return render(request, 'user_form.html', {'form': form, 'userType': usertype})
+    return render(request, 'user_form.html', {'form': form, 'userType': usertype, 'checkAdmin': checkadmin})
 
 
 @login_required
@@ -232,6 +232,42 @@ def my_authority(request):
         'userType': usertype,
     }
     return render(request, 'my_authority.html', context)
+
+@login_required
+def data_recycling(request):
+    #צריך לשלוח את הסוג משתמש בכל דף כדי להציג את התפריט הנכון לפי משתמש
+    loginuser = request.user
+    checkadmin = loginuser.is_superuser
+    usertype = loginuser.user_type
+    userID = loginuser.id
+    userLocation = loginuser.location
+    if checkadmin:
+        usertype = "a"
+    
+    recycling_data = usersrecycling.objects.all()  # ניגשנו לשדה בתוך שדה עם __
+    context = {
+        
+        'recycling_data': recycling_data,
+    }
+    return render(request, 'data_recycling.html', context)
+
+@login_required
+def data_user(request):
+    #צריך לשלוח את הסוג משתמש בכל דף כדי להציג את התפריט הנכון לפי משתמש
+    loginuser = request.user
+    checkadmin = loginuser.is_superuser
+    usertype = loginuser.user_type
+    userID = loginuser.id
+    userLocation = loginuser.location
+    if checkadmin:
+        usertype = "a"
+    
+    recycling_data = usersrecycling.objects.all()  # ניגשנו לשדה בתוך שדה עם __
+    context = {
+        
+        'recycling_data': recycling_data,
+    }
+    return render(request, 'data_user.html', context)
 
 
 @login_required
