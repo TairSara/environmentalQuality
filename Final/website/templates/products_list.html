@@ -1,7 +1,10 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends "master.html" %}
 
+{% block title %}
+    רשימת מוצרים
+{% endblock %}
+
+{% block content %}
 <h1>רשימת מוצרים</h1>
 <table>
 
@@ -13,5 +16,4 @@
     {% endfor %}
 </table>
 <a href="{% url 'addproduct' %}">הוספת מוצר</a>
-</body>
-</html>
+{% endblock %}

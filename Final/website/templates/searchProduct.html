@@ -1,11 +1,12 @@
+{% extends "master.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-  <title>בחירת מוצרת למיחזור</title>
+
+{% block title %}
+    הפרופיל שלי
+{% endblock %}
+
+{% block content %}
   <link rel="stylesheet" href="{% static 'css/searchProduct.css' %}">
-</head>
-<body>
     <div class="container">
         <h1>בחירת מוצר למיחזור</h1>
         <form action="{% url 'searchProduct' %}" method="POST">
@@ -32,5 +33,4 @@
           </div>
         {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}

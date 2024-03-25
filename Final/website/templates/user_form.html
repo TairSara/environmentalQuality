@@ -10,6 +10,12 @@
     <form id="userDetails" method="">
         {% csrf_token %}
         {{ form.as_p }}
+
+        {% if userType %}
+            <a href="{% url 'recycling_bin' %}">  נתוני מיחזור בעיר שלי </a>
+            <a href="{% url 'my_authority' %}">  הרשות שלי  </a>
+        {% endif %}
     </form>
-    <a href="{% url 'userEditform' %}">עדכון</a>
+    <a href="{% url 'userEditform' %}">עדכון פרופיל</a>
+
 {% endblock %}

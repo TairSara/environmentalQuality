@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+
+{% block title %}
+    ניקוד
+{% endblock %}
+
+{% block content %}
+<h1> טבלת ניקוד</h1>
+  {% csrf_token %}
+  <label for="username">שם משתמש:</label>
+  <input type="text" id="username" name="username" value="{{ username }}" readonly><br><br>
+
+  
+  <label for="score">ניקוד:</label>
+  <input type="number" id="score" name="score" value="{{ score }}" readonly><br><br>
+  
+
+{% endblock %}

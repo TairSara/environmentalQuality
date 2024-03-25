@@ -1,0 +1,14 @@
+{% extends "master.html" %}
+
+{% block title %}
+    ביצוע מיחזור
+{% endblock %}
+
+{% block content %}
+<h1>מלא פרטי מיחזור</h1>
+<form id="recyclingform" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="שמור">
+</form>
+{% endblock %}

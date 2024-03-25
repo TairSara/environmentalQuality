@@ -112,6 +112,14 @@ def logout_view(request):
     return redirect('/')
 
 def addproduct(request):
+    loginuser = request.user
+    checkadmin = loginuser.is_superuser
+    usertype = loginuser.user_type
+    userID = loginuser.id
+    userLocation = loginuser.location
+    if checkadmin:
+        usertype = "a"
+
     pagetitle = 'הוסף מוצר חדש'
     if request.method == 'POST':
         form = ProductForm(request.POST)
@@ -124,6 +132,14 @@ def addproduct(request):
     return render(request, 'product_form.html', {'form': form, 'pagetitle': pagetitle})
 
 def updateproduct(request, pk):
+    loginuser = request.user
+    checkadmin = loginuser.is_superuser
+    usertype = loginuser.user_type
+    userID = loginuser.id
+    userLocation = loginuser.location
+    if checkadmin:
+        usertype = "a"
+
     pagetitle = 'עדכון פרטי מוצר'
     product = products.objects.get(id=pk)
     form = ProductForm(instance=product) # prepopulate the form with an existing band
@@ -177,6 +193,46 @@ def userform(request):
         form.fields['comp_num'].widget = forms.HiddenInput()
 
     return render(request, 'user_form.html', {'form': form, 'userType': usertype})
+
+
+@login_required
+def recycling_bin(request):
+    #צריך לשלוח את הסוג משתמש בכל דף כדי להציג את התפריט הנכון לפי משתמש
+    loginuser = request.user
+    checkadmin = loginuser.is_superuser
+    usertype = loginuser.user_type
+    userID = loginuser.id
+    userLocation = loginuser.location
+    if checkadmin:
+        usertype = "a"
+    
+    recycling_data = usersrecycling.objects.filter(user__location=userLocation)  # ניגשנו לשדה בתוך שדה עם __
+    context = {
+        
+        'recycling_data': recycling_data,
+        'userType': usertype,
+    }
+    return render(request, 'recycling_bin.html', context)
+
+@login_required
+def my_authority(request):
+    #צריך לשלוח את הסוג משתמש בכל דף כדי להציג את התפריט הנכון לפי משתמש
+    loginuser = request.user
+    checkadmin = loginuser.is_superuser
+    usertype = loginuser.user_type
+    userID = loginuser.id
+    userLocation = loginuser.location
+    if checkadmin:
+        usertype = "a"
+    
+    recycling_data = usersrecycling.objects.filter(user__location=userLocation)  # ניגשנו לשדה בתוך שדה עם __
+    context = {
+        
+        'recycling_data': recycling_data,
+        'userType': usertype,
+    }
+    return render(request, 'my_authority.html', context)
+
 
 @login_required
 def userEditform(request):

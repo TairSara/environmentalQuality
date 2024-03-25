@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+{% block title %}
+    צור קשר
+{% endblock %}
+
+{% block content %}
+<h1>מלא את פנייתך</h1>
+<form id="contactform" method="post" action="{% url 'contact_view' %}">
+    {% csrf_token %}
+    <input type="hidden" name="user_id" id="user_id" value="{{ request.user.id }}">
+    <textarea name="contactText" id="contactText" rows="10" cols="30"></textarea>
+    <br>
+    <input type="submit" id="submitForm" value="שמור">
+</form>
+
+{% endblock %}

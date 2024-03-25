@@ -1,0 +1,34 @@
+{% extends "master.html" %}
+
+{% block title %}
+   נתוני מיחזור - לפי פחים
+{% endblock %}
+
+{% block content %}
+<h1>  הרשות שלי</h1>
+<table>
+
+    <tr>
+        <th>שם משתמש</th>
+        <th>שם פרטי</th>
+        <th>שם משפחה</th>
+        <th>אימייל</th>
+        <th>עיר מגורים</th>
+        <th>התחבר לאחרונה  </th>
+      </tr>
+    {% for p in recycling_data %}
+        <tr>
+            <!-- אני ניגשת לשדה הראשון עם הנקודה הראשונה ואז לשדה שאני רוצה בתוך הטבלה של הראשון -->
+            <td>{{ p.user.username }}</td>
+            <td>{{ p.user.first_name }}</td> 
+            <td>{{ p.user.last_name }}</td>
+            <td>{{ p.user.email }}</td>
+            <td>{{ p.user.location }}</td>
+            <td>{{ p.user.lsatlogin }}</td>
+            
+        </tr>
+    {% endfor %}
+    
+</table>
+<a href="{% url 'userform' %}"> חזרה לפרופיל שלי</a>
+{% endblock %}

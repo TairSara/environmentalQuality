@@ -47,9 +47,9 @@ class usersContacts(models.Model):
 
 
 class usersrecycling(models.Model):
-	creationDT = models.DateTimeField(auto_now_add=True)
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	product = models.ForeignKey(products, on_delete=models.CASCADE)
+	creationDT = models.DateTimeField(auto_now_add=True) #הזמן שהוא דיווח על המיחזור  
+	user = models.ForeignKey(User, on_delete=models.CASCADE) #משתמש שמיחזר 
+	product = models.ForeignKey(products, on_delete=models.CASCADE) #המוצר שהוא מחזיר 
 	userImg = models.ImageField(upload_to="usersImgs/")
 	status = models.BooleanField(default=False)
 

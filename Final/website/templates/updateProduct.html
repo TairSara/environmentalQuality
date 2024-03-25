@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html>
-<body>
-{% if success %}
-  {{success}}
-{% endif %}
-<h1> עדכון פרטי מוצר </h1>
-<form action="" method="post" novalidate>
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="Submit">
-</form>
+{% extends "master.html" %}
 
-</body>
-</html>
+{% block title %}
+    עדכון מוצר
+{% endblock %}
+
+{% block content %}
+    {% if success %}
+      {{success}}
+    {% endif %}
+    <h1> עדכון פרטי מוצר </h1>
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Submit">
+    </form>
+
+  {% endblock %}

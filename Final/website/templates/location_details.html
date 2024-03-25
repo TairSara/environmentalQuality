@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+
+{% block title %}
+    רשימת הצרכנים שלי
+{% endblock %}
+
+{% block content %}
+<h1> רשימת הצרכנים תחת העיר שלי</h1>
+<table>
+
+    {% for user in corporation_users %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.location }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'userform' %}"> חזרה לפרופיל שלי</a>
+{% endblock %}
